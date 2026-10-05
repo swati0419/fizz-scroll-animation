@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Unbounded:wght@500;700&display=swap");
+@import "tailwindcss";
+
+
+:root {
+  --font-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --font-sans: "Space Grotesk", system-ui, "Segoe UI", sans-serif;
+
+  --color-ink: #080808;
+  --color-paper: #f1f0ec;
+}
+
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--color-ink);
+    color: #fff;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.hero {
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.08), transparent 35%),
+    var(--color-ink);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 80px 80px;
+
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 75%);
+          mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 75%);
+}
+
+.hero-title {
+  font-size: clamp(1.9rem, 4.8vw, 4.75rem);
+  letter-spacing: 0.2em;
+  line-height: 1.05;
+}
+
+.hero-letter {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.hero-object,
+.can-rotor,
+.hero-can-inner,
+.can-ground {
+  will-change: transform;
+}
+
+.fizz-can {
+  position: relative;
+  width: 125px;
+  height: 270px;
+  overflow: hidden;           
+  border-radius: 24px;
+
+  background: linear-gradient(
+    90deg,
+    #777 0%,
+    #d7d7d7 12%,
+    #ffffff 28%,
+    #eeeeee 50%,
+    #ffffff 72%,
+    #c4c4c4 88%,
+    #777 100%
+  );
+
+  box-shadow:
+    inset 8px 0 12px rgba(255, 255, 255, 0.55),
+    inset -10px 0 15px rgba(0, 0, 0, 0.25);
+}
+
+.can-sheen {
+  position: absolute;
+  top: -10%;
+  bottom: -10%;
+  left: -60%;
+  width: 45%;
+  transform: skewX(-18deg);
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  mix-blend-mode: soft-light;
+}
+
+.can-top {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92px;
+  height: 27px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #f5f5f5, #aaa);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: #222;
+
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.8),
+    0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.can-body {
+  position: absolute;
+  top: 58px;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: #111;
+
+  text-shadow:
+    1px 1px 0 #fff,
+    2px 2px 3px rgba(0, 0, 0, 0.25);
+}
+
+.can-body span {
+  line-height: 0.9;
+}
+
+.can-bottom {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #aaa, #eee);
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.can-ground {
+  width: 190px;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(255, 255, 255, 0.14) 45%,
+    transparent 72%
+  );
+  filter: blur(6px);
+}
+
+.floating-shape {
+  position: absolute;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.shape-one   { width: 180px; height: 180px; top: 15%;    left: 10%; }
+.shape-two   { width: 90px;  height: 90px;  top: 25%;    right: 15%; }
+.shape-three { width: 40px;  height: 40px;  bottom: 20%; left: 20%; }
+
+.about-section {
+  isolation: isolate;
+}
+
+.experience-content {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: clamp(1.7rem, 9vw, 2.4rem);
+    letter-spacing: 0.16em;
+  }
+
+  .fizz-can { width: 90px; height: 200px; border-radius: 18px; }
+
+  .can-top    { width: 68px; height: 20px; top: 7px; font-size: 6px; letter-spacing: 2px; }
+  .can-body   { top: 45px; font-size: 28px; letter-spacing: 2px; }
+  .can-bottom { width: 68px; height: 15px; bottom: 6px; }
+  .can-ground { width: 140px; height: 26px; }
+
+  .shape-one   { width: 100px; height: 100px; left: 5%; }
+  .shape-two   { width: 60px;  height: 60px;  right: 5%; }
+  .shape-three { width: 25px;  height: 25px;  left: 10%; }
+}
